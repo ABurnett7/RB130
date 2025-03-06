@@ -1,2 +1,2 @@
 # README #
-#My git repository for Launch School's RB120
+#My git repository for Launch School's RB130
