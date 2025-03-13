@@ -5,4 +5,4 @@ class MyFirstTest < Minitest::Test
   def test_first_test
     assert true
   end
-endr
+end
