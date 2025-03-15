@@ -11,7 +11,7 @@ class TestExercise < Minitest::Test
     assert_includes(@list, 'xyz')
   end
 
-  def test_includes_failuer
+  def test_includes_failure
     assert_includes(@failure_list, 'xyz')
   end
 end
