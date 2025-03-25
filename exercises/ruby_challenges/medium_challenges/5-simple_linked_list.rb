@@ -1,57 +1,59 @@
-# Hashed out the idea of what a linked list even is.
-# This is not what the problem is asking for, I was just trying to make sense of the idea first.
-
+# Not done
 
 class Element
-  attr_reader :datum, :name, :next
-
-  def initialize(name, datum = nil)
-    @name = name
+  attr_reader :datum, :next
+  @@last_created = nil
+  
+  
+  def initialize(datum, next = nil)
     @datum = datum
-    @next = nil  
+    @next = @@last_created
+    @@last_created = self
   end
 
-  def set_next(index, reverse)
-    if reverse
-      @next = index > 0 ? index - 1 : nil
-    else
-      @next = index < LinkedList.linked_list.size - 1 ? index + 1 : nil
-    end
+  def tail?
+    datum.nil?
   end
 end
 
-class LinkedList
-  attr_reader :element 
+class SimpleLinkedList
+  attr_reader :list
 
-  @@linked_list = []
-  @@reverse_order = false
-
-  def initialize(name, datum = nil)
-    element = Element.new(name, datum)
-    @@linked_list << element
-    self.class.update_next_pointers
+  def initialize(array=[])
+    @list = array
   end
 
-  def self.linked_list
-    @@linked_list.each_with_index do |element, index|
-       puts "name: #{element.name}, next: #{element.next}"
-    end
+  def to_array
+    list.to_a
   end
 
-  def self.update_next_pointers
-    @@linked_list.each_with_index do |element, index|
-      element.set_next(index, @@reverse_order)
-    end
+  def push(element)
+    list.to_array.push(element)
   end
 
-  def self.reverse_order
-    @@reverse_order = true
-    update_next_pointers
+  def remove_head 
+    list.to_array.delete_at(-1)
   end
 
-  def self.normal_order
-    @@reverse_order = false
-    update_next_pointers
+  def peek
+    list.to_array[-1]
+  end
+
+  def size
+    list.to_array.size
+  end
+
+  def empty?
+    list.to_array.empty?
+  end
+
+  def head_data
+    list.to_array[-1].datum
+  end
+
+  def reverse_list
+    list.to_array.reverse
   end
 end
+
 
