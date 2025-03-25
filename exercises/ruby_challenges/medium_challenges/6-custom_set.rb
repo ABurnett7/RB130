@@ -11,15 +11,15 @@ class CustomSet
   end
 
   def intersection(other)
-    CustomSet.new(set & other.set)
+    self.class.new(set & other.set)
   end
 
   def union(other)
-    CustomSet.new(set.union(other.set))
+    self.class.new(set.union(other.set))
   end
 
   def difference(other)
-    CustomSet.new(set - other.set)
+   self.class.new(set - other.set)
   end
 
   def disjoint?(other)
